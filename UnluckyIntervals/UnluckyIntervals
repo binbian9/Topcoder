@@ -1,0 +1,126 @@
+#include <algorithm>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <set>
+#include <sstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+#define eps (le-7)
+#define INF (le60)
+#define MAX (1<<30)
+#define MIN (-MAX)
+#define LL long long
+
+#define pb push_back
+
+#define FOR(i,s,e) for (int i = int(s); i != int(e); i++)
+#define FORIT(i,c) for (typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
+#define ISEQ(c) (c).begin(), (c).end()
+#define gcd(a,b) __gcd(a,b)
+#define EQ(a,b) (abs(a-b) <eps)
+#define sqr(a) ((a)*(a))
+#define popcount(n) __builtin_popcount(n)
+
+#define pii pair<int,int>
+
+inline LL strtoint(const string &s) {stringstream ss;ss<<s;LL ret;ss>>ret;return ret;}
+inline string inttostr(const LL &a) {stringstream ss;ss<<a;string ret;ss>>ret;return ret;}
+
+class UnluckyIntervals {
+
+	map<int,vector<int> > m;
+	map<int,vector<int> >::iterator iter;
+	vector<pair<int,int> > v;
+	public: vector<int> getLuckiest(vector<int> luckySet, int n) {
+
+		int start = 1;
+		vector<int> ans;
+		int size = luckySet.size();
+		for(int i=0;i<size;i++)
+		{
+			cout<<luckySet[i]<<endl;
+			ans.push_back(luckySet[i]);
+			if(luckySet[i]-1>start)
+			{
+				pii pp;
+				if(false)
+				{
+					pp.first=start;
+					pp.second=start+n+1;
+					v.push_back(pp);
+					pp.first=luckySet[i]-1-n-1;
+					pp.second=luckySet[i]-1;
+					v.push_back(pp);
+				}
+				else
+				{
+					pp.first=start;
+					pp.second=luckySet[i]-1;
+					v.push_back(pp);
+				}
+
+
+			}
+			start = luckySet[i]+1;
+		}
+
+		int vsize = 0;
+		vsize = v.size();
+		for(int i=0;i<vsize;i++)
+		{
+			for(int j=v[i].first;j<=v[i].second;j++)
+			{
+				int sum = 0;
+				//i am the right end
+				sum+= (j-v[i].first)*(v[i].second-j+1);
+				//i am the left end
+				sum+= v[i].second-j;
+
+				iter = m.find(sum);
+				if(iter==m.end())
+				{
+					vector<int> vi;
+					vi.push_back(j);
+					m.insert(pair<int,vector<int> >(sum,vi));
+				}
+				else
+				{
+					iter->second.push_back(j);
+				}
+
+			}
+		}
+
+		int counter=0;
+		for(iter=m.begin();iter!=m.end();iter++)
+		{
+			sort(iter->second.begin(),iter->second.end());
+			int sz = iter->second.size();
+			for(int i=0;i<sz;i++)
+			{
+				if(counter>=n)
+					break;
+				ans.push_back(iter->second[i]);
+				counter++;
+
+			}
+			if(counter>=n)
+				break;
+		}
+		int zz = luckySet[size-1]+1;
+		int as = ans.size();
+		while(as<n)
+		{
+			ans.push_back(zz);
+			zz++;
+			as++;
+		}
+		vector<int> kkk(ans.begin(),ans.begin()+n);
+
+		return kkk;
+	}
+
+};
