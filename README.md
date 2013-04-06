@@ -15,6 +15,9 @@ Thanks
 
 SRM 438 DIV I
 -- UnluckyIntervals
+    #Tricks
+    -- Big Number Multiplication
+    -- Sort the struct in map<struct A,vector<int> >
 
 SRM 438 DIV II
 -- UnluckyNumbers
