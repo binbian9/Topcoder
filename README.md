@@ -9,3 +9,13 @@ Please Visit
 http://www.vim.org/scripts/script.php?script_id=3321
 
 Thanks
+
+
+====Solved Problem List===
+
+SRM 438 DIV I
+-- UnluckyIntervals
+
+SRM 438 DIV II
+-- UnluckyNumbers
+
