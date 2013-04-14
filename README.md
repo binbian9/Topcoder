@@ -13,12 +13,21 @@ Thanks
 
 ====Solved Problem List===
 
-SRM 438 DIV I
+SRM-438-DIV-II
 -- UnluckyIntervals
     #Tricks
     -- Big Number Multiplication
     -- Sort the struct in map<struct A,vector<int> >
 
-SRM 438 DIV II
+SRM-438-DIV-II
 -- UnluckyNumbers
 
+SRM-576-DIV-II
+-- ArcadeManao-576
+-- TheExperimentDiv2-256
+
+SRM-575-DIV-II
+-- TheSwapsDivTwo
+
+
+To Be continued ...
