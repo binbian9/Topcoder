@@ -1,5 +1,5 @@
 
-#include "SymmetricPie.cc"
+#include "TheSwapsDivTwo.cc"
 
 #include <algorithm>
 #include <cmath>
@@ -11,8 +11,6 @@
 #include <sys/time.h>
 #include <vector>
 
-using namespace std;
-
 
 const static double __EPSILON = 1e-9;
 static double __time = 0.0;
@@ -22,7 +20,7 @@ static void __timer_start()
 	struct timeval tv;
 	if (gettimeofday(&tv, NULL) == 0)
 	{
-		__time = double(tv.tv_sec) + double(tv.tv_usec) * 0.000001;
+		__time = double(tv.tv_sec) * 1000.0 + double(tv.tv_usec) * 0.001;
 	}
 }
 
@@ -126,11 +124,17 @@ bool __equals(double actual, double expected)
 bool __equals(const std::vector<double>& actual, const std::vector<double>& expected)
 {
 	if (actual.size() != expected.size())
+	{
 		return false;
+	}
 
 	for (size_t i = 0; i < actual.size(); ++i)
+	{
 		if (!__equals(actual[i], expected[i]))
+		{
 			return false;
+		}
+	}
 
 	return true;
 }
@@ -144,53 +148,61 @@ int main(int argc, char* argv[])
 
 	if (1 < argc) __abort_on_fail = true;
 
+	std::cout << "TAP version 13" << std::endl;
+	std::cout.flush();
+
 	std::ifstream __in("testcases.txt");
 	for(;;)
 	{
-		int	__expected;
-		vector <int>	dogs;
+		int __testnum = __pass + __fail + 1;
 
-		__in >> __expected >> dogs;
+		int	__expected;
+		vector <int>	sequence;
+
+		__in >> __expected >> sequence;
 		if (!__in.good()) break;
 
-		std::cout << "----------------------------------------" << std::endl
-			  << "Test " << (__pass + __fail) << ": ";
+		std::cout << "# input for test " << __testnum << ": " << sequence << std::endl;
 		std::cout.flush();
 
 		__timer_start();
 
-		SymmetricPie object;
-		int __actual = object.getLines(dogs);
+		TheSwapsDivTwo __object;
+		int __actual = __object.find(sequence);
 
 		double __t = __timer_stop();
 
+		std::cout << "# test completed in " << __t << "ms" << std::endl;
+		std::cout.flush();
+
 		if (__equals(__actual, __expected))
 		{
-			std::cout << "[PASS] in " << __t << " seconds." << std::endl;
+			std::cout << "ok";
 			++__pass;
 		}
 		else
 		{
-			std::cout << "[FAIL] in " << __t << " seconds." << std::endl
-				  << "->  Input: " << dogs << std::endl
-				  << "   Actual: " << __actual << std::endl
-				  << " Expected: " << __expected << std::endl;
+			std::cout << "not ok";
 			++__fail;
-			if (__abort_on_fail) std::abort();
 		}
+
+		std::cout << " " << __testnum << " - " << __actual << " must equal " << __expected << std::endl;
+		std::cout.flush();
+
+		if (__abort_on_fail && 0 < __fail) std::abort();
 	}
 
-	std::cout << "========================================" << std::endl
-		  << " Total Pass: " << __pass << std::endl
-		  << " Total Fail: " << __fail << std::endl;
+	std::cout << "1.." << (__pass + __fail) << std::endl
+		  << "# passed: " << __pass << std::endl
+		  << "# failed: " << __fail << std::endl;
 
 	if (__fail == 0)
 	{
-		std::cout << std::endl << "Nice!  "
-			  << "Don't forget to compile remotely before submitting."
-			  << std::endl;
+		std::cout << std::endl
+			  << "# Nice! Don't forget to compile remotely before submitting." << std::endl;
 	}
 
 	return __fail;
 }
 
+// vim:ft=cpp:noet:ts=8

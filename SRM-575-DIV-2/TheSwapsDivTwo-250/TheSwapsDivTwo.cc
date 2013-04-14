@@ -27,10 +27,29 @@ using namespace std;
 inline LL strtoint(const string &s) {stringstream ss;ss<<s;LL ret;ss>>ret;return ret;}
 inline string inttostr(const LL &a) {stringstream ss;ss<<a;string ret;ss>>ret;return ret;}
 
-class SymmetricPie {
+class TheSwapsDivTwo {
 
-  public: int getLines(vector <int> dogs) {
-		return $DUMMYRETURN$;
+  public: int find(vector <int> sequence) {
+             map<vector<int>, bool> m;
+             map<vector<int>, bool>::iterator iter;
+             int size = sequence.size();
+             if(size == 2) 
+                return 1;
+             m[sequence] = true;
+             for(int i=0;i<size;i++)
+             {
+                for(int j=i+1;j<size;j++)
+                {
+                   swap(sequence[i],sequence[j]);
+                   iter = m.find(sequence);
+                   if(iter == m.end())
+                      m[sequence] = true;
+
+                   swap(sequence[i],sequence[j]);
+
+                }
+             }
+		return m.size();
 	}
 
 };
