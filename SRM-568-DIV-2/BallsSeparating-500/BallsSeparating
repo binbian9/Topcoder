@@ -1,0 +1,130 @@
+#include <algorithm>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <set>
+#include <sstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+#define eps (le-7)
+#define INF (le60)
+#define MAX (1<<30)
+#define MIN (-MAX)
+#define LL long long
+
+#define pb push_back
+
+#define FOR(i,s,e) for (int i = int(s); i != int(e); i++)
+#define FORIT(i,c) for (typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
+#define ISEQ(c) (c).begin(), (c).end()
+#define gcd(a,b) __gcd(a,b)
+#define EQ(a,b) (abs(a-b) <eps)
+#define sqr(a) ((a)*(a))
+#define popcount(n) __builtin_popcount(n)
+
+inline LL strtoint(const string &s) {stringstream ss;ss<<s;LL ret;ss>>ret;return ret;}
+inline string inttostr(const LL &a) {stringstream ss;ss<<a;string ret;ss>>ret;return ret;}
+
+class BallsSeparating {
+
+  public: int minOperations(vector <int> red, vector <int> green, vector <int> blue) {
+             int size = green.size();
+             if(size<3)
+                return -1;
+             int ans = 0;
+             int kk[3]={0};
+             int temp[51]={0};
+             vector<int> v[50];
+             for(int i=0;i<size;i++)
+             {
+                int M = 0;
+                int sum = 0;
+                v[i].push_back(red[i]);
+                v[i].push_back(green[i]);
+                v[i].push_back(blue[i]);
+                sum+=red[i]+green[i]+blue[i];
+                M = max(red[i],max(green[i],blue[i]));
+                if(M==red[i])
+                {
+                   kk[0]++;
+                   temp[i]=0;
+                }
+                else if(M==green[i])
+                {
+                   kk[1]++;
+                   temp[i]=1;
+                }
+                else
+                {
+                   kk[2]++;
+                   temp[i]=2;
+                }
+                ans+= sum-M;
+             }
+             while(kk[0]<1 || kk[1]<1 || kk[2]<1)
+             {
+                if(kk[0]<1)
+                {
+                   int mm = MAX;
+                   int tempi;
+                   for(int i=0;i<size;i++)
+                   {
+                      if(kk[temp[i]]>1)
+                      {
+                         mm = min(mm,v[i][temp[i]]-v[i][0]);
+                         tempi = i;
+                      }
+                   }
+                   kk[0]++;
+                   kk[temp[tempi]]--;
+                   temp[tempi]=0;
+                   ans+=mm;
+                   cout<<"mm = "<<mm<<" tempi= "<<tempi<<endl;
+                }
+                else if(kk[1]<1)
+                {
+                   int mm = MAX;
+                   int tempi;
+                   for(int i=0;i<size;i++)
+                   {
+                       if(kk[temp[i]]>1)
+                       {
+                            mm = min(mm,v[i][temp[i]]-v[i][1]);
+                            tempi = i;
+                       }
+                    }
+                    kk[1]++;
+                    kk[temp[tempi]]--;
+                    temp[tempi]=1;
+                    ans+=mm;
+                   cout<<"mm = "<<mm<<" tempi= "<<tempi<<endl;
+                }
+                else if(kk[2]<1)
+                {
+                   int mm = MAX;
+                   int tempi;
+                   for(int i=0;i<size;i++)
+                   {
+                       if(kk[temp[i]]>1)
+                       {
+                            mm = min(mm,v[i][temp[i]]-v[i][2]);
+                            tempi = i;
+                       }
+                    }
+                    kk[2]++;
+                    kk[temp[tempi]]--;
+                    temp[tempi]=2;
+                    ans+=mm;
+                   cout<<"mm = "<<mm<<" tempi= "<<tempi<<endl;
+                }
+
+             }
+		return ans;
+	}
+
+};
+
+// Edited by VimCoder 0.3.5
+// http://github.com/chazmcgarvey/vimcoder
