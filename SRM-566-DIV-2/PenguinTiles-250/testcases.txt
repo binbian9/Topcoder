@@ -1,0 +1,20 @@
+0
+{"PP",
+ "P."}
+1
+{"PPPPPPPP",
+ ".PPPPPPP"}
+2
+{"PPP",
+ "P.P",
+ "PPP"}
+1
+{"P.",
+ "PP",
+ "PP",
+ "PP"}
+2
+{".PPP",
+ "PPPP",
+ "PPPP",
+ "PPPP"}
