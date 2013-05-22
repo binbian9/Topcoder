@@ -1,0 +1,11 @@
+18
+{"tomorrow", "topcoder"}
+6
+{"a","b"}
+10
+{"a", "ab", "abac", "abacus" }
+39
+{"pyramid", "sphinx", "sphere", "python", "serpent"}
+13
+{"ba","a","a","b","ba"}
+
