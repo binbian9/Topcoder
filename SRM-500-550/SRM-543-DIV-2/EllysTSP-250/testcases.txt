@@ -1,0 +1,10 @@
+5
+"CVVVC"
+1
+"VVV"
+3
+"VVVVCVV"
+7
+"CVCVCVC"
+1
+"V"
