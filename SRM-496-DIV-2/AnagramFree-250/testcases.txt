@@ -1,0 +1,8 @@
+1
+{"abcd","abdc","dabc","bacd"}
+2
+{"abcd","abac","aabc","bacd"}
+6
+{"aa","aaaaa","aaa","a","bbaaaa","aaababaa"}
+4
+{"creation","sentence","reaction","sneak","star","rats","snake"}
