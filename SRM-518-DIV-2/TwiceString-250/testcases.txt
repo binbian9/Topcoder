@@ -1,8 +1,0 @@
-"ababa"
-"aba"
-"xxxxxx"
-"xxxxx"
-"topcodertopcoder"
-"topcoder"
-"abracadabracadabra"
-"abracadabra"
