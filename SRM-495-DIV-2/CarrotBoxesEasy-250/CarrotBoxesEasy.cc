@@ -29,8 +29,53 @@ inline string inttostr(const LL &a) {stringstream ss;ss<<a;string ret;ss>>ret;re
 
 class CarrotBoxesEasy {
 
-  public: int theIndex(vector <int> carrots, int K) {
-		return $DUMMYRETURN$;
+  public: 
+     struct so{
+        int i;
+        int c;
+        bool operator<(const so & a) const{
+           if(c>a.c)
+              return true;
+           else if(c<a.c)
+              return false;
+           else {
+              return i<a.i;
+           }
+        }
+     };
+     int theIndex(vector <int> carrots, int K) {
+             int size = carrots.size();
+             if(size<2)
+                return 0;
+             vector<struct so> v;
+             for(int i=0;i<size;i++)
+             {
+                so ss;
+                ss.i = i;
+                ss.c = carrots[i];
+                v.push_back(ss);
+             }
+             sort(v.begin(),v.end());
+             int ans = 0;
+             while(K>0 && v[0].c>0)
+             {
+                int d = v[0].c - v[1].c;
+                if(d==0)
+                {
+                   
+                   v[0].c --;
+                   K--;
+                }
+                else {
+                   v[0].c -= d;
+                   K -= d;
+                }
+                cout<<"d="<<d<<endl;
+                ans = v[0].i;
+                sort(v.begin(),v.end());
+             }
+
+		return ans;
 	}
 
 };
