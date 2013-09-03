@@ -1,0 +1,30 @@
+3
+"bug"
+"bug"
+"bug"
+{"buggy", "debugger", "debug"}
+3
+"a"
+"b"
+"c"
+{"a", "b", "tco"}
+0
+"cut"
+"sore"
+"scar"
+{"scary", "oscar"}
+1
+"bar"
+"else"
+"foo"
+{"foofoofoo", "foobar", "elsewhere"}
+3
+"pre"
+"s"
+"all"
+{"all", "coders", "be", "prepared", "for", "the", "challenge", "phase"}
+4
+"abcd"
+"bcde"
+"bcd"
+{"abcde","abc","bcde","bcdbcd","abcd","aaaa","abcdefebcde","aabbccdd"}
