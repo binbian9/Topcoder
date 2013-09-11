@@ -1,0 +1,10 @@
+5
+"YNYY"
+8
+"YNNN"
+16
+"NNNN"
+1
+"YYYY"
+11
+"NYNY"
