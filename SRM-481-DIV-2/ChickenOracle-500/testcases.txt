@@ -1,0 +1,25 @@
+"The egg"
+10
+10
+0
+0
+"The oracle is a lie"
+60
+40
+0
+30
+"The chicken"
+60
+20
+5
+25
+"Ambiguous"
+1000
+500
+250
+250
+"The oracle is a lie"
+338919
+310645
+70422
+304279
