@@ -37,12 +37,20 @@ class ChickenOracle {
              bool chick = false;
              for(int i=0;i<=m;i++)
              {
+                if(lieCount + liarCount - i>n)
+                   continue;
                 int correct = n - (lieCount + liarCount - 2*i);
                 //cout<<"correct="<<correct<<endl;
                 if(correct == eggCount)
+                {
+                   cout<<"egg i="<<i<<", correct="<<correct<<endl;
                    egg = true;
+                }
                 if(correct == n-eggCount)
+                {
                    chick = true;
+                   cout<<"chick i="<<i<<", correct="<<correct<<endl;
+                }
              }
              if(egg && !chick)
                 return "The egg";
