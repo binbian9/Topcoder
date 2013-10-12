@@ -1,0 +1,15 @@
+"Alice"
+{ "Alice", "Bill", "Carol", "Dick" }
+{ "Bill", "Dick", "Alice", "Alice" }
+""
+{ "Alice", "Bill", "Carol", "Dick" }
+{ "Carol", "Carol", "Bill", "Bill" }
+"Bill"
+{ "Alice", "Bill", "Carol", "Dick" }
+{ "Alice", "Alice", "Bill", "Bill" }
+""
+{ "Alice", "Bill" }
+{ "Alice", "Bill" }
+"whiteRabbit"
+{ "WhiteRabbit", "whiterabbit", "whiteRabbit", "Whiterabbit" }
+{ "whiteRabbit", "whiteRabbit", "whiteRabbit", "WhiteRabbit" }
