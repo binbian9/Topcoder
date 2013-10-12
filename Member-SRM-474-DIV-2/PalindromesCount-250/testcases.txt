@@ -1,0 +1,15 @@
+2
+"aba"
+"b"
+3
+"aa"
+"a"
+0
+"aca"
+"bb"
+3
+"abba"
+"abba"
+0
+"topcoder"
+"coder"
